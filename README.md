@@ -4,10 +4,13 @@ A Duolingo-style app for learning programming through multiple choice questions 
 
 ## Features
 
-- **Multiple Choice Questions**: Fill-in-the-blank style questions for classic coding problems
-- **Algorithm Categories**: Problems tagged with concepts like "Array", "Stack", "Dynamic Programming"
-- **Progress Tracking**: See your score and review incorrect answers
-- **Clean UI**: SwiftUI interface optimized for learning
+- **Category-Based Learning**: Browse by algorithm concepts (Array, Stack, Dynamic Programming, etc.)
+- **Random Problem Selection**: Get a random problem from your chosen category
+- **Interactive Code Completion**: Fill-in-the-blank style questions with real Python syntax highlighting
+- **Real-Time Timer**: 5-minute countdown starts when you begin answering
+- **Visual Feedback**: Code lines turn green/red based on correct/incorrect answers
+- **Fast Animations**: Quick tap-twice interaction for smooth progression
+- **Variable Question Count**: Each problem can have different numbers of questions
 
 ## How to Run
 
@@ -25,10 +28,12 @@ A Duolingo-style app for learning programming through multiple choice questions 
 
 ## App Structure
 
-- **Home Screen**: List of coding problems with tags and difficulty
-- **Problem Detail**: Shows the solution with blanked-out lines
-- **Questions**: Multiple choice questions for each blank line
-- **Results**: Score summary with correct/incorrect answers
+- **Category Screen**: List of learning categories (Array, Stack, Functions, etc.)
+- **Random Problem**: Launches a random problem from selected category
+- **Problem Detail**: Shows Python code solution with syntax highlighting
+- **Interactive Questions**: Tap once to select, tap twice to submit and advance
+- **Timer**: 5-minute countdown that starts when you begin
+- **Results**: Score summary with green/red highlighted code lines
 
 ## Sample Problems
 
