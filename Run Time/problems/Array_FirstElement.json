@@ -1,0 +1,19 @@
+{
+  "title": "First List Element",
+  "tags": ["Array"],
+  "difficulty": "Easy",
+  "description": "Write a function that returns the first element of a list. Example: Input: nums = [1, 2, 3], Output: 1",
+  "solution": [
+    "def first_element(nums):",
+    "    return nums[0]",
+    "print(first_element([1, 2, 3]))"
+  ],
+  "questions": [
+    {
+      "lineIndex": 1,
+      "question": "How do you access the first element of a list?",
+      "options": ["    return nums[0]", "    return nums[1]", "    return nums[-1]", "    return nums.first()"],
+      "correctAnswerIndex": 0
+    }
+  ]
+}

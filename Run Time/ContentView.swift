@@ -132,12 +132,27 @@ struct ContentView: View {
         
         print("🟢 [ContentView] New Question requested for category: \(category)")
         
-        if let newProblem = getRandomProblem(for: category) {
+        // Try to get a different problem from the same category
+        let problemsInCategory = Problem.sampleProblems.filter { $0.tags.contains(category) }
+        let differentProblems = problemsInCategory.filter { $0.id != selectedProblem?.id }
+        
+        if let newProblem = differentProblems.randomElement() {
+            // Found a different problem in the same category
             selectedProblem = newProblem
-            // Keep the same category
-            print("🟢 [ContentView] New problem selected: \(newProblem.title)")
+            print("🟢 [ContentView] New problem selected from same category: \(newProblem.title)")
         } else {
-            print("🔴 [ContentView] ERROR: No new problem found for category: \(category)")
+            // No different problems in this category, fall back to any random problem
+            print("🟡 [ContentView] No other problems in category \(category), falling back to random problem")
+            let allOtherProblems = Problem.sampleProblems.filter { $0.id != selectedProblem?.id }
+            
+            if let randomProblem = allOtherProblems.randomElement() {
+                selectedProblem = randomProblem
+                // Update current category to the new problem's first tag
+                currentCategory = randomProblem.tags.first
+                print("🟢 [ContentView] Random fallback problem selected: \(randomProblem.title)")
+            } else {
+                print("🔴 [ContentView] ERROR: No other problems available at all")
+            }
         }
     }
     
@@ -145,22 +160,36 @@ struct ContentView: View {
     private func handleNewCategory() {
         print("🟢 [ContentView] New Category requested")
         
-        // Get a random category different from the current one
+        // Try to get a random category different from the current one
         let availableCategories = categories.filter { $0 != currentCategory }
+        var attempts = 0
+        let maxAttempts = 10 // Prevent infinite loops
         
-        guard let randomCategory = availableCategories.randomElement() else {
-            print("🔴 [ContentView] ERROR: No other categories available")
-            return
+        while attempts < maxAttempts {
+            if let randomCategory = availableCategories.randomElement() {
+                print("🟢 [ContentView] Trying category: \(randomCategory)")
+                
+                if let newProblem = getRandomProblem(for: randomCategory) {
+                    selectedProblem = newProblem
+                    currentCategory = randomCategory
+                    print("🟢 [ContentView] New problem selected from category \(randomCategory): \(newProblem.title)")
+                    return
+                }
+            }
+            attempts += 1
         }
         
-        print("🟢 [ContentView] New category selected: \(randomCategory)")
+        // If we get here, we couldn't find a problem in a different category
+        // Fall back to any random problem different from the current one
+        print("🟡 [ContentView] Could not find problem in different category, falling back to any random problem")
+        let allOtherProblems = Problem.sampleProblems.filter { $0.id != selectedProblem?.id }
         
-        if let newProblem = getRandomProblem(for: randomCategory) {
-            selectedProblem = newProblem
-            currentCategory = randomCategory
-            print("🟢 [ContentView] New problem selected: \(newProblem.title)")
+        if let randomProblem = allOtherProblems.randomElement() {
+            selectedProblem = randomProblem
+            currentCategory = randomProblem.tags.first
+            print("🟢 [ContentView] Random fallback problem selected: \(randomProblem.title)")
         } else {
-            print("🔴 [ContentView] ERROR: No problem found for category: \(randomCategory)")
+            print("🔴 [ContentView] ERROR: No other problems available at all")
         }
     }
     

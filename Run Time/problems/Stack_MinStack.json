@@ -1,0 +1,35 @@
+{
+  "title": "Min Stack",
+  "tags": ["Stack", "Design"],
+  "difficulty": "Medium",
+  "description": "Design a stack that supports push, pop, top, and retrieving the minimum element in constant time. Example: MinStack() -> push(-2) -> push(0) -> push(-3) -> getMin() -> -3",
+  "solution": [
+    "class MinStack:",
+    "    def __init__(self):",
+    "        self.stack = []",
+    "        self.min_stack = []",
+    "    def push(self, val):",
+    "        self.stack.append(val)",
+    "        if not self.min_stack or val <= self.min_stack[-1]:",
+    "            self.min_stack.append(val)",
+    "    def pop(self):",
+    "        if self.stack.pop() == self.min_stack[-1]:",
+    "            self.min_stack.pop()",
+    "    def getMin(self):",
+    "        return self.min_stack[-1]"
+  ],
+  "questions": [
+    {
+      "lineIndex": 6,
+      "question": "When do you push to the min_stack?",
+      "options": ["    if not self.min_stack or val >= self.min_stack[-1]:", "    if not self.min_stack or val <= self.min_stack[-1]:", "    if val < self.min_stack[-1]:", "    always push to min_stack"],
+      "correctAnswerIndex": 1
+    },
+    {
+      "lineIndex": 9,
+      "question": "When do you pop from min_stack?",
+      "options": ["    if self.stack.pop() == self.min_stack[-1]:", "    if self.stack.pop() != self.min_stack[-1]:", "    always pop from min_stack", "    never pop from min_stack"],
+      "correctAnswerIndex": 0
+    }
+  ]
+}

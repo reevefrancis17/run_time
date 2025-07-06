@@ -1,0 +1,18 @@
+{
+  "title": "Valid Anagram",
+  "tags": ["String", "Hash Table"],
+  "difficulty": "Easy",
+  "description": "Given two strings s and t, return true if t is an anagram of s, and false otherwise. Example: Input: s = 'anagram', t = 'nagaram', Output: true",
+  "solution": [
+    "def is_anagram(s, t):",
+    "    return sorted(s) == sorted(t)"
+  ],
+  "questions": [
+    {
+      "lineIndex": 1,
+      "question": "How do you check if two strings are anagrams?",
+      "options": ["    return sorted(s) == sorted(t)", "    return s == t", "    return len(s) == len(t)", "    return s.reverse() == t"],
+      "correctAnswerIndex": 0
+    }
+  ]
+}

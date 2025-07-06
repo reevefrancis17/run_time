@@ -1,0 +1,36 @@
+{
+  "title": "Pair Sum Finder",
+  "tags": ["Array", "Hash Table"],
+  "difficulty": "Medium",
+  "description": "Write a function that takes an array of integers and a target sum, returning indices of two numbers that add to the target. Example: Input: nums = [3, 4, 5], target = 9, Output: [1, 2]",
+  "solution": [
+    "def find_pair_sum(nums, target):",
+    "    num_map = {}",
+    "    for i, num in enumerate(nums):",
+    "        complement = target - num",
+    "        if complement in num_map:",
+    "            return [num_map[complement], i]",
+    "        num_map[num] = i",
+    "    return []"
+  ],
+  "questions": [
+    {
+      "lineIndex": 1,
+      "question": "Which data structure allows fast lookup of numbers?",
+      "options": ["    num_list = []", "    num_set = set()", "    num_map = {}", "    num_array = []"],
+      "correctAnswerIndex": 2
+    },
+    {
+      "lineIndex": 3,
+      "question": "How do you compute the number needed to reach the target?",
+      "options": ["    complement = target + num", "    complement = target - num", "    complement = num - target", "    complement = target * num"],
+      "correctAnswerIndex": 1
+    },
+    {
+      "lineIndex": 4,
+      "question": "How do you check if the complement exists?",
+      "options": ["    if complement in nums:", "    if complement in num_map:", "    if num in num_map:", "    if complement == num:"],
+      "correctAnswerIndex": 1
+    }
+  ]
+}

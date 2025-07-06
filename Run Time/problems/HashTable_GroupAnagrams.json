@@ -1,0 +1,31 @@
+{
+  "title": "Group Anagrams",
+  "tags": ["Array", "Hash Table", "String"],
+  "difficulty": "Medium",
+  "description": "Given an array of strings strs, group the anagrams together. Example: Input: strs = ['eat','tea','tan','ate','nat','bat'], Output: [['bat'],['nat','tan'],['ate','eat','tea']]",
+  "solution": [
+    "def group_anagrams(strs):",
+    "    anagram_map = {}",
+    "    for s in strs:",
+    "        key = tuple(sorted(s))",
+    "        if key in anagram_map:",
+    "            anagram_map[key].append(s)",
+    "        else:",
+    "            anagram_map[key] = [s]",
+    "    return list(anagram_map.values())"
+  ],
+  "questions": [
+    {
+      "lineIndex": 3,
+      "question": "How do you create a key for anagram grouping?",
+      "options": ["    key = sorted(s)", "    key = tuple(sorted(s))", "    key = s.sort()", "    key = list(sorted(s))"],
+      "correctAnswerIndex": 1
+    },
+    {
+      "lineIndex": 4,
+      "question": "How do you check if the key already exists?",
+      "options": ["    if key in anagram_map:", "    if anagram_map.has_key(key):", "    if key exists in anagram_map:", "    if anagram_map[key]:"],
+      "correctAnswerIndex": 0
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "title": "Balanced Brackets",
+  "tags": ["String", "Stack"],
+  "difficulty": "Medium",
+  "description": "Write a function that checks if a string of brackets ('(', ')', '{', '}', '[', ']') is balanced. Example: Input: s = '({[]})', Output: True",
+  "solution": [
+    "def is_balanced(s):",
+    "    stack = []",
+    "    mapping = {')': '(', '}': '{', ']': '['}",
+    "    for char in s:",
+    "        if char in mapping:",
+    "            if not stack or stack.pop() != mapping[char]:",
+    "                return False",
+    "        else:",
+    "            stack.append(char)",
+    "    return len(stack) == 0"
+  ],
+  "questions": [
+    {
+      "lineIndex": 1,
+      "question": "Which data structure tracks the order of brackets?",
+      "options": ["    queue = []", "    stack = []", "    brackets_set = set()", "    brackets_dict = {}"],
+      "correctAnswerIndex": 1
+    },
+    {
+      "lineIndex": 2,
+      "question": "How do you map closing brackets to opening ones?",
+      "options": ["    mapping = {'(': ')', '{': '}', '[': ']'}", "    mapping = {')': '(', '}': '{', ']': '['}", "    mapping = {')': 1, '}': 2, ']': 3}", "    mapping = {'(': 1, '{': 2, '[': 3}"],
+      "correctAnswerIndex": 1
+    },
+    {
+      "lineIndex": 5,
+      "question": "How do you check if a closing bracket matches?",
+      "options": ["    if stack.pop() == char:", "    if not stack or stack.pop() != mapping[char]:", "    if stack[-1] == mapping[char]:", "    if stack.empty():"],
+      "correctAnswerIndex": 1
+    }
+  ]
+}

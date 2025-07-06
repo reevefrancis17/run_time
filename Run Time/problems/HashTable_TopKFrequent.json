@@ -1,0 +1,26 @@
+{
+  "title": "Top K Frequent Elements",
+  "tags": ["Array", "Hash Table", "Heap (Priority Queue)"],
+  "difficulty": "Medium",
+  "description": "Given an integer array nums and an integer k, return the k most frequent elements. Example: Input: nums = [1,1,1,2,2,3], k = 2, Output: [1,2]",
+  "solution": [
+    "def top_k_frequent(nums, k):",
+    "    from collections import Counter",
+    "    count = Counter(nums)",
+    "    return [item for item, freq in count.most_common(k)]"
+  ],
+  "questions": [
+    {
+      "lineIndex": 2,
+      "question": "How do you count frequency of elements?",
+      "options": ["    count = dict(nums)", "    count = Counter(nums)", "    count = set(nums)", "    count = list(nums)"],
+      "correctAnswerIndex": 1
+    },
+    {
+      "lineIndex": 3,
+      "question": "How do you get the k most frequent items?",
+      "options": ["    return count.most_common(k)", "    return [item for item, freq in count.most_common(k)]", "    return count.keys()[:k]", "    return sorted(count)[:k]"],
+      "correctAnswerIndex": 1
+    }
+  ]
+}

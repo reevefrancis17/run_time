@@ -1,0 +1,38 @@
+{
+  "title": "Max Consecutive Ones",
+  "tags": ["Array", "Sliding Window"],
+  "difficulty": "Medium",
+  "description": "Write a function that finds the maximum number of consecutive 1s in a binary array. Example: Input: nums = [1, 1, 0, 1, 1, 1], Output: 3",
+  "solution": [
+    "def max_consecutive_ones(nums):",
+    "    max_count = 0",
+    "    current_count = 0",
+    "    for num in nums:",
+    "        if num == 1:",
+    "            current_count += 1",
+    "            max_count = max(max_count, current_count)",
+    "        else:",
+    "            current_count = 0",
+    "    return max_count"
+  ],
+  "questions": [
+    {
+      "lineIndex": 4,
+      "question": "What condition checks for a 1 in the array?",
+      "options": ["    if num == 1:", "    if num == 0:", "    if num > 0:", "    if num != 1:"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "lineIndex": 6,
+      "question": "How do you update the maximum count of consecutive 1s?",
+      "options": ["    max_count = current_count", "    max_count = max(max_count, current_count)", "    max_count += 1", "    max_count = current_count + 1"],
+      "correctAnswerIndex": 1
+    },
+    {
+      "lineIndex": 8,
+      "question": "What happens when a 0 is encountered?",
+      "options": ["    current_count += 1", "    current_count = 0", "    max_count = 0", "    current_count = max_count"],
+      "correctAnswerIndex": 1
+    }
+  ]
+}

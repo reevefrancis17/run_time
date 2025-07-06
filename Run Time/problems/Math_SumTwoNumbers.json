@@ -1,0 +1,19 @@
+{
+  "title": "Sum of Two Numbers",
+  "tags": ["Math", "Functions"],
+  "difficulty": "Easy",
+  "description": "Write a function that takes two integers and returns their sum. Example: Input: a = 3, b = 4, Output: 7",
+  "solution": [
+    "def sum_two(a, b):",
+    "    return a + b",
+    "print(sum_two(3, 4))"
+  ],
+  "questions": [
+    {
+      "lineIndex": 1,
+      "question": "What returns the sum of two numbers?",
+      "options": ["    return a + b", "    return a * b", "    return a - b", "    print(a + b)"],
+      "correctAnswerIndex": 0
+    }
+  ]
+}

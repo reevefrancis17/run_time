@@ -1,0 +1,38 @@
+{
+  "title": "Product of Array Except Self",
+  "tags": ["Array", "Prefix Sum"],
+  "difficulty": "Medium",
+  "description": "Given an integer array nums, return an array answer such that answer[i] is equal to the product of all the elements of nums except nums[i]. Example: Input: nums = [1,2,3,4], Output: [24,12,8,6]",
+  "solution": [
+    "def product_except_self(nums):",
+    "    n = len(nums)",
+    "    result = [1] * n",
+    "    for i in range(1, n):",
+    "        result[i] = result[i-1] * nums[i-1]",
+    "    right = 1",
+    "    for i in range(n-1, -1, -1):",
+    "        result[i] *= right",
+    "        right *= nums[i]",
+    "    return result"
+  ],
+  "questions": [
+    {
+      "lineIndex": 2,
+      "question": "How do you initialize the result array?",
+      "options": ["    result = [0] * n", "    result = [1] * n", "    result = nums.copy()", "    result = []"],
+      "correctAnswerIndex": 1
+    },
+    {
+      "lineIndex": 4,
+      "question": "How do you calculate left products?",
+      "options": ["    result[i] = result[i-1] + nums[i-1]", "    result[i] = result[i-1] * nums[i-1]", "    result[i] = nums[i-1]", "    result[i] = result[i-1] * nums[i]"],
+      "correctAnswerIndex": 1
+    },
+    {
+      "lineIndex": 7,
+      "question": "How do you multiply with right products?",
+      "options": ["    result[i] += right", "    result[i] *= right", "    result[i] = right", "    result[i] /= right"],
+      "correctAnswerIndex": 1
+    }
+  ]
+}

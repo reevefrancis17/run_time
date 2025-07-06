@@ -1,0 +1,39 @@
+{
+  "title": "Longest Substring Without Repeating Characters",
+  "tags": ["String", "Sliding Window"],
+  "difficulty": "Medium",
+  "description": "Given a string s, find the length of the longest substring without repeating characters. Example: Input: s = 'abcabcbb', Output: 3 (substring: 'abc')",
+  "solution": [
+    "def length_of_longest_substring(s):",
+    "    char_set = set()",
+    "    left = 0",
+    "    max_len = 0",
+    "    for right in range(len(s)):",
+    "        while s[right] in char_set:",
+    "            char_set.remove(s[left])",
+    "            left += 1",
+    "        char_set.add(s[right])",
+    "        max_len = max(max_len, right - left + 1)",
+    "    return max_len"
+  ],
+  "questions": [
+    {
+      "lineIndex": 1,
+      "question": "Which data structure tracks characters in current window?",
+      "options": ["    char_list = []", "    char_set = set()", "    char_dict = {}", "    char_array = []"],
+      "correctAnswerIndex": 1
+    },
+    {
+      "lineIndex": 5,
+      "question": "What do you do when a duplicate character is found?",
+      "options": ["    while s[right] in char_set:", "    if s[right] in char_set:", "    while s[left] in char_set:", "    if s[left] not in char_set:"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "lineIndex": 9,
+      "question": "How do you calculate window length?",
+      "options": ["    max_len = max(max_len, right + left + 1)", "    max_len = max(max_len, right - left + 1)", "    max_len = max(max_len, right - left)", "    max_len = right - left + 1"],
+      "correctAnswerIndex": 1
+    }
+  ]
+}

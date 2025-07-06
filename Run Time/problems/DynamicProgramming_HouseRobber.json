@@ -1,0 +1,33 @@
+{
+  "title": "House Robber",
+  "tags": ["Array", "Dynamic Programming"],
+  "difficulty": "Medium",
+  "description": "You are a professional robber planning to rob houses along a street. Each house has a certain amount of money stashed. Adjacent houses have security systems connected. Given an integer array nums representing the amount of money of each house, return the maximum amount of money you can rob without alerting the police. Example: Input: nums = [1,2,3,1], Output: 4",
+  "solution": [
+    "def rob(nums):",
+    "    if not nums:",
+    "        return 0",
+    "    if len(nums) == 1:",
+    "        return nums[0]",
+    "    dp = [0] * len(nums)",
+    "    dp[0] = nums[0]",
+    "    dp[1] = max(nums[0], nums[1])",
+    "    for i in range(2, len(nums)):",
+    "        dp[i] = max(dp[i-1], dp[i-2] + nums[i])",
+    "    return dp[-1]"
+  ],
+  "questions": [
+    {
+      "lineIndex": 7,
+      "question": "How do you initialize dp[1]?",
+      "options": ["    dp[1] = nums[1]", "    dp[1] = max(nums[0], nums[1])", "    dp[1] = nums[0] + nums[1]", "    dp[1] = 0"],
+      "correctAnswerIndex": 1
+    },
+    {
+      "lineIndex": 9,
+      "question": "How do you calculate maximum money at house i?",
+      "options": ["    dp[i] = dp[i-1] + nums[i]", "    dp[i] = max(dp[i-1], dp[i-2] + nums[i])", "    dp[i] = dp[i-2] + nums[i]", "    dp[i] = max(dp[i-1], nums[i])"],
+      "correctAnswerIndex": 1
+    }
+  ]
+}

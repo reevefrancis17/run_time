@@ -1,0 +1,37 @@
+{
+  "title": "Longest Increasing Sequence",
+  "tags": ["Array", "Dynamic Programming"],
+  "difficulty": "Hard",
+  "description": "Write a function that finds the length of the longest increasing sequence in an array of integers. Example: Input: nums = [10, 9, 2, 5, 3, 7], Output: 3 (sequence: [2, 3, 7])",
+  "solution": [
+    "def longest_increasing(nums):",
+    "    if not nums:",
+    "        return 0",
+    "    dp = [1] * len(nums)",
+    "    for i in range(1, len(nums)):",
+    "        for j in range(i):",
+    "            if nums[i] > nums[j]:",
+    "                dp[i] = max(dp[i], dp[j] + 1)",
+    "    return max(dp)"
+  ],
+  "questions": [
+    {
+      "lineIndex": 3,
+      "question": "How do you initialize the dp array?",
+      "options": ["    dp = [0] * len(nums)", "    dp = [1] * len(nums)", "    dp = [nums[0]] * len(nums)", "    dp = []"],
+      "correctAnswerIndex": 1
+    },
+    {
+      "lineIndex": 6,
+      "question": "How do you check if a number can extend a sequence?",
+      "options": ["    if nums[i] < nums[j]:", "    if nums[i] > nums[j]:", "    if nums[i] == nums[j]:", "    if nums[i] >= nums[j]:"],
+      "correctAnswerIndex": 1
+    },
+    {
+      "lineIndex": 7,
+      "question": "How do you update the sequence length at index i?",
+      "options": ["    dp[i] = dp[j] + 1", "    dp[i] = max(dp[i], dp[j] + 1)", "    dp[i] = min(dp[i], dp[j] + 1)", "    dp[i] = dp[j]"],
+      "correctAnswerIndex": 1
+    }
+  ]
+}

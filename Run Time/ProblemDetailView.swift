@@ -149,8 +149,17 @@ struct ProblemDetailView: View {
                             .foregroundColor(.secondary)
                             .frame(width: 15, alignment: .trailing)
                         
-                        // Always show syntax highlighted code (no more underscores)
-                        syntaxHighlightedText(line)
+                        // Show different content based on question state
+                        if shouldHideLineText(for: index) {
+                            // Hide text for unanswered questions - show placeholder
+                            Text("// Your answer will appear here")
+                                .font(.system(.caption, design: .monospaced))
+                                .foregroundColor(.secondary)
+                                .italic()
+                        } else {
+                            // Show actual code for answered questions or non-question lines
+                            syntaxHighlightedText(line)
+                        }
                         
                         Spacer()
                     }
@@ -395,6 +404,15 @@ struct ProblemDetailView: View {
         }
         
         return Color.clear
+    }
+    
+    /// Determines if the text for a given line should be hidden
+    private func shouldHideLineText(for lineIndex: Int) -> Bool {
+        // Hide text for lines that correspond to unanswered questions
+        if let questionIndex = problem.questions.firstIndex(where: { $0.lineIndex == lineIndex }) {
+            return !answeredQuestions[questionIndex]
+        }
+        return false
     }
     
     /// Current question being displayed

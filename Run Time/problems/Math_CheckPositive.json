@@ -1,0 +1,19 @@
+{
+  "title": "Check Positive Number",
+  "tags": ["Math"],
+  "difficulty": "Easy",
+  "description": "Write a function that checks if a number is positive and returns True if it is, False otherwise. Example: Input: num = 5, Output: True",
+  "solution": [
+    "def is_positive(num):",
+    "    return num > 0",
+    "print(is_positive(5))"
+  ],
+  "questions": [
+    {
+      "lineIndex": 1,
+      "question": "How do you check if a number is positive?",
+      "options": ["    return num > 0", "    return num < 0", "    return num == 0", "    return num >= 0"],
+      "correctAnswerIndex": 0
+    }
+  ]
+}

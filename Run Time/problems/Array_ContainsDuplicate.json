@@ -1,0 +1,29 @@
+{
+  "title": "Contains Duplicate",
+  "tags": ["Array", "Hash Table"],
+  "difficulty": "Easy",
+  "description": "Given an integer array nums, return true if any value appears at least twice in the array, and return false if every element is distinct. Example: Input: nums = [1,2,3,1], Output: true",
+  "solution": [
+    "def contains_duplicate(nums):",
+    "    seen = set()",
+    "    for num in nums:",
+    "        if num in seen:",
+    "            return True",
+    "        seen.add(num)",
+    "    return False"
+  ],
+  "questions": [
+    {
+      "lineIndex": 1,
+      "question": "Which data structure efficiently tracks seen numbers?",
+      "options": ["    seen = []", "    seen = set()", "    seen = {}", "    seen = tuple()"],
+      "correctAnswerIndex": 1
+    },
+    {
+      "lineIndex": 3,
+      "question": "How do you check if a number was seen before?",
+      "options": ["    if num in seen:", "    if num == seen:", "    if seen.contains(num):", "    if num not in seen:"],
+      "correctAnswerIndex": 0
+    }
+  ]
+}

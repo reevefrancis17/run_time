@@ -50,401 +50,246 @@ struct Problem: Identifiable, Codable, Equatable {
     }
 }
 
-// MARK: - Sample Data
+// MARK: - Sample Data (Loading from embedded JSON data)
 extension Problem {
+    /// Sample problems created from JSON data (for testing without bundle modifications)
     static let sampleProblems: [Problem] = [
-        // MARK: - Two Sum
-        Problem(
-            title: "Two Sum",
-            tags: ["Array", "Hash Table"],
-            difficulty: "Easy",
-            description: """
-                Given an array of integers `nums` and an integer `target`, return the indices of two numbers such that they add up to `target`. 
-                You may assume that each input has exactly one solution, and you may not use the same element twice.
-                Example: Input: nums = [2, 7, 11, 15], target = 9, Output: [0, 1]
-                """,
-            solution: [
-                "def two_sum(nums, target):",
-                "    # Initialize a dictionary to store number-index pairs",
-                "    num_map = {}",
-                "    # Iterate through the array with index",
-                "    for i, num in enumerate(nums):",
-                "        # Calculate the complement needed to reach target",
-                "        complement = target - num",
-                "        # Check if complement exists in dictionary",
-                "        if complement in num_map:",
-                "            # Return indices of complement and current number",
-                "            return [num_map[complement], i]",
-                "        # Store current number and its index",
-                "        num_map[num] = i",
-                "    # Return empty list if no solution is found",
-                "    return []"
-            ],
-            questions: [
-                MultipleChoiceQuestion(
-                    lineIndex: 2,
-                    question: "Which data structure is used to store numbers and their indices for O(1) lookup?",
-                    options: [
-                        "    num_list = []",
-                        "    num_set = set()",
-                        "    num_map = {}",
-                        "    num_array = []"
-                    ],
-                    correctAnswerIndex: 2
-                ),
-                MultipleChoiceQuestion(
-                    lineIndex: 6,
-                    question: "How do we calculate the number needed to reach the target?",
-                    options: [
-                        "        complement = target + num",
-                        "        complement = target - num",
-                        "        complement = target * num",
-                        "        complement = num - target"
-                    ],
-                    correctAnswerIndex: 1
-                )
-            ]
-        ),
+        // Array problems
+        Problem.fromJSONString("""
+        {
+          "title": "First List Element",
+          "tags": ["Array"],
+          "difficulty": "Easy",
+          "description": "Write a function that returns the first element of a list. Example: Input: nums = [1, 2, 3], Output: 1",
+          "solution": [
+            "def first_element(nums):",
+            "    return nums[0]",
+            "print(first_element([1, 2, 3]))"
+          ],
+          "questions": [
+            {
+              "lineIndex": 1,
+              "question": "How do you access the first element of a list?",
+              "options": ["    return nums[0]", "    return nums[1]", "    return nums[-1]", "    return nums.first()"],
+              "correctAnswerIndex": 0
+            }
+          ]
+        }
+        """)!,
+        Problem.fromJSONString("""
+        {
+          "title": "Contains Duplicate",
+          "tags": ["Array", "Hash Table"],
+          "difficulty": "Easy",
+          "description": "Given an integer array nums, return true if any value appears at least twice in the array, and return false if every element is distinct. Example: Input: nums = [1,2,3,1], Output: true",
+          "solution": [
+            "def contains_duplicate(nums):",
+            "    seen = set()",
+            "    for num in nums:",
+            "        if num in seen:",
+            "            return True",
+            "        seen.add(num)",
+            "    return False"
+          ],
+          "questions": [
+            {
+              "lineIndex": 1,
+              "question": "Which data structure efficiently tracks seen numbers?",
+              "options": ["    seen = []", "    seen = set()", "    seen = {}", "    seen = tuple()"],
+              "correctAnswerIndex": 1
+            },
+            {
+              "lineIndex": 3,
+              "question": "How do you check if a number was seen before?",
+              "options": ["    if num in seen:", "    if num == seen:", "    if seen.contains(num):", "    if num not in seen:"],
+              "correctAnswerIndex": 0
+            }
+          ]
+        }
+        """)!,
+        // String problems  
+        Problem.fromJSONString("""
+        {
+          "title": "String Length",
+          "tags": ["String"],
+          "difficulty": "Easy",
+          "description": "Write a function that returns the length of a given string. Example: Input: text = 'hello', Output: 5",
+          "solution": [
+            "def get_length(text):",
+            "    return len(text)",
+            "print(get_length('hello'))"
+          ],
+          "questions": [
+            {
+              "lineIndex": 1,
+              "question": "How do you get the length of a string?",
+              "options": ["    return len(text)", "    return text.length()", "    return text.size()", "    return count(text)"],
+              "correctAnswerIndex": 0
+            }
+          ]
+        }
+        """)!,
+        Problem.fromJSONString("""
+        {
+          "title": "Valid Anagram",
+          "tags": ["String", "Hash Table"],
+          "difficulty": "Easy",
+          "description": "Given two strings s and t, return true if t is an anagram of s, and false otherwise. Example: Input: s = 'anagram', t = 'nagaram', Output: true",
+          "solution": [
+            "def is_anagram(s, t):",
+            "    return sorted(s) == sorted(t)"
+          ],
+          "questions": [
+            {
+              "lineIndex": 1,
+              "question": "How do you check if two strings are anagrams?",
+              "options": ["    return sorted(s) == sorted(t)", "    return s == t", "    return len(s) == len(t)", "    return s.reverse() == t"],
+              "correctAnswerIndex": 0
+            }
+          ]
+        }
+        """)!,
+        // Math problems
+        Problem.fromJSONString("""
+        {
+          "title": "Sum of Two Numbers",
+          "tags": ["Math", "Functions"],
+          "difficulty": "Easy",
+          "description": "Write a function that takes two integers and returns their sum. Example: Input: a = 3, b = 4, Output: 7",
+          "solution": [
+            "def sum_two(a, b):",
+            "    return a + b",
+            "print(sum_two(3, 4))"
+          ],
+          "questions": [
+            {
+              "lineIndex": 1,
+              "question": "What returns the sum of two numbers?",
+              "options": ["    return a + b", "    return a * b", "    return a - b", "    print(a + b)"],
+              "correctAnswerIndex": 0
+            }
+          ]
+        }
+        """)!,
+        Problem.fromJSONString("""
+        {
+          "title": "FizzBuzz",
+          "tags": ["Math", "String"],
+          "difficulty": "Easy",
+          "description": "Given an integer n, return a string array answer where answer[i] == 'FizzBuzz' if i is divisible by 3 and 5, 'Fizz' if i is divisible by 3, 'Buzz' if i is divisible by 5, or str(i) otherwise.",
+          "solution": [
+            "def fizz_buzz(n):",
+            "    result = []",
+            "    for i in range(1, n + 1):",
+            "        if i % 15 == 0:",
+            "            result.append('FizzBuzz')",
+            "        elif i % 3 == 0:",
+            "            result.append('Fizz')",
+            "        elif i % 5 == 0:",
+            "            result.append('Buzz')",
+            "        else:",
+            "            result.append(str(i))",
+            "    return result"
+          ],
+          "questions": [
+            {
+              "lineIndex": 3,
+              "question": "How do you check if a number is divisible by both 3 and 5?",
+              "options": ["    if i % 3 == 0 and i % 5 == 0:", "    if i % 15 == 0:", "    if i % 8 == 0:", "    if i % 3 == 0 or i % 5 == 0:"],
+              "correctAnswerIndex": 1
+            },
+            {
+              "lineIndex": 5,
+              "question": "How do you check if a number is divisible by 3 only?",
+              "options": ["    elif i % 3 == 0:", "    elif i % 3 != 0:", "    elif i / 3 == 0:", "    elif i == 3:"],
+              "correctAnswerIndex": 0
+            }
+          ]
+        }
+        """)!,
+        // Medium complexity problems
+        Problem.fromJSONString("""
+        {
+          "title": "Two Sum",
+          "tags": ["Array", "Hash Table"],
+          "difficulty": "Medium",
+          "description": "Write a function that takes an array of integers and a target sum, returning indices of two numbers that add to the target. Example: Input: nums = [3, 4, 5], target = 9, Output: [1, 2]",
+          "solution": [
+            "def two_sum(nums, target):",
+            "    num_map = {}",
+            "    for i, num in enumerate(nums):",
+            "        complement = target - num",
+            "        if complement in num_map:",
+            "            return [num_map[complement], i]",
+            "        num_map[num] = i",
+            "    return []"
+          ],
+          "questions": [
+            {
+              "lineIndex": 1,
+              "question": "Which data structure allows fast lookup of numbers?",
+              "options": ["    num_list = []", "    num_set = set()", "    num_map = {}", "    num_array = []"],
+              "correctAnswerIndex": 2
+            },
+            {
+              "lineIndex": 3,
+              "question": "How do you compute the number needed to reach the target?",
+              "options": ["    complement = target + num", "    complement = target - num", "    complement = num - target", "    complement = target * num"],
+              "correctAnswerIndex": 1
+            },
+            {
+              "lineIndex": 4,
+              "question": "How do you check if the complement exists?",
+              "options": ["    if complement in nums:", "    if complement in num_map:", "    if num in num_map:", "    if complement == num:"],
+              "correctAnswerIndex": 1
+            }
+          ]
+        }
+        """)!
+    ].compactMap { $0 }
+    
+    /// Creates a Problem from a JSON string  
+    static func fromJSONString(_ jsonString: String) -> Problem? {
+        guard let data = jsonString.data(using: .utf8),
+              let json = try? JSONSerialization.jsonObject(with: data) as? [String: Any] else {
+            return nil
+        }
+        return fromJSON(json)
+    }
+    
+    /// Creates a Problem from a JSON dictionary
+    static func fromJSON(_ json: [String: Any]) -> Problem? {
+        guard let title = json["title"] as? String,
+              let tags = json["tags"] as? [String],
+              let difficulty = json["difficulty"] as? String,
+              let description = json["description"] as? String,
+              let solution = json["solution"] as? [String],
+              let questionsData = json["questions"] as? [[String: Any]] else {
+            return nil
+        }
         
-        // MARK: - Valid Parentheses
-        Problem(
-            title: "Valid Parentheses",
-            tags: ["String", "Stack"],
-            difficulty: "Easy",
-            description: """
-                Given a string `s` containing only the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
-                A string is valid if open brackets are closed by the same type of brackets in the correct order.
-                Example: Input: s = "()", Output: true; Input: s = "([)]", Output: false
-                """,
-            solution: [
-                "def is_valid(s):",
-                "    # Initialize a stack to track opening brackets",
-                "    stack = []",
-                "    # Dictionary mapping closing brackets to opening brackets",
-                "    mapping = {')': '(', '}': '{', ']': '['}",
-                "    # Iterate through each character in the string",
-                "    for char in s:",
-                "        # If character is a closing bracket",
-                "        if char in mapping:",
-                "            # Check if stack is empty or top doesn't match",
-                "            if not stack or stack.pop() != mapping[char]:",
-                "                return False",
-                "        # If character is an opening bracket",
-                "        else:",
-                "            stack.append(char)",
-                "    # String is valid if stack is empty",
-                "    return len(stack) == 0"
-            ],
-            questions: [
-                MultipleChoiceQuestion(
-                    lineIndex: 2,
-                    question: "Which data structure is used to track the order of opening brackets?",
-                    options: [
-                        "    queue = []",
-                        "    stack = []",
-                        "    brackets_set = set()",
-                        "    brackets_dict = {}"
-                    ],
-                    correctAnswerIndex: 1
-                ),
-                MultipleChoiceQuestion(
-                    lineIndex: 4,
-                    question: "What does the mapping dictionary store?",
-                    options: [
-                        "    mapping = {')': '(', '}': '{', ']': '['}",
-                        "    mapping = {'(': ')', '{': '}', '[': ']'}",
-                        "    mapping = {')': 1, '}': 2, ']': 3}",
-                        "    mapping = {'(': 1, '{': 2, '[': 3}"
-                    ],
-                    correctAnswerIndex: 0
-                )
-            ]
-        ),
+        var questions: [Problem.MultipleChoiceQuestion] = []
+        for questionData in questionsData {
+            if let question = Problem.MultipleChoiceQuestion.fromJSON(questionData) {
+                questions.append(question)
+            }
+        }
         
-        // MARK: - Maximum Subarray
-        Problem(
-            title: "Maximum Subarray",
-            tags: ["Array", "Dynamic Programming"],
-            difficulty: "Medium",
-            description: """
-                Given an integer array `nums`, find the contiguous subarray with the largest sum and return its sum.
-                Example: Input: nums = [-2, 1, -3, 4, -1, 2, 1, -5, 4], Output: 6 (subarray [4, -1, 2, 1])
-                """,
-            solution: [
-                "def max_subarray(nums):",
-                "    # Initialize max_sum and current_sum with first element",
-                "    max_sum = nums[0]",
-                "    current_sum = nums[0]",
-                "    # Iterate through array starting from second element",
-                "    for i in range(1, len(nums)):",
-                "        # Decide to start new subarray or extend existing one",
-                "        current_sum = max(nums[i], current_sum + nums[i])",
-                "        # Update maximum sum if current sum is larger",
-                "        max_sum = max(max_sum, current_sum)",
-                "    # Return the maximum sum found",
-                "    return max_sum"
-            ],
-            questions: [
-                MultipleChoiceQuestion(
-                    lineIndex: 6,
-                    question: "How do we decide whether to start a new subarray or extend the current one?",
-                    options: [
-                        "        current_sum = nums[i]",
-                        "        current_sum = current_sum + nums[i]",
-                        "        current_sum = max(nums[i], current_sum + nums[i])",
-                        "        current_sum = min(nums[i], current_sum + nums[i])"
-                    ],
-                    correctAnswerIndex: 2
-                ),
-                MultipleChoiceQuestion(
-                    lineIndex: 8,
-                    question: "How do we update the maximum sum found so far?",
-                    options: [
-                        "        max_sum = current_sum",
-                        "        max_sum = max(max_sum, current_sum)",
-                        "        max_sum = min(max_sum, current_sum)",
-                        "        max_sum += current_sum"
-                    ],
-                    correctAnswerIndex: 1
-                )
-            ]
-        ),
+        return Problem(title: title, tags: tags, difficulty: difficulty, description: description, solution: solution, questions: questions)
+    }
+}
+
+// MARK: - MultipleChoiceQuestion JSON Loading
+extension Problem.MultipleChoiceQuestion {
+    /// Creates a MultipleChoiceQuestion from a JSON dictionary
+    static func fromJSON(_ json: [String: Any]) -> Problem.MultipleChoiceQuestion? {
+        guard let lineIndex = json["lineIndex"] as? Int,
+              let question = json["question"] as? String,
+              let options = json["options"] as? [String],
+              let correctAnswerIndex = json["correctAnswerIndex"] as? Int else {
+            return nil
+        }
         
-        // MARK: - Calculate Area of a Rectangle
-        Problem(
-            title: "Calculate Rectangle Area",
-            tags: ["Math", "Functions"],
-            difficulty: "Easy",
-            description: """
-                Write a function `calculate_area` that takes two parameters, `length` and `width`, and returns the area of a rectangle.
-                Example: Input: length = 10, width = 5, Output: 50
-                """,
-            solution: [
-                "def calculate_area(length, width):",
-                "    # Calculate area by multiplying length and width",
-                "    return length * width",
-                "",
-                "# Example usage",
-                "area = calculate_area(10, 5)",
-                "print('The area is:', area)"
-            ],
-            questions: [
-                MultipleChoiceQuestion(
-                    lineIndex: 2,
-                    question: "What is the correct way to calculate the area in the function?",
-                    options: [
-                        "    return length + width",
-                        "    return length - width",
-                        "    return length * width",
-                        "    return length / width"
-                    ],
-                    correctAnswerIndex: 2
-                ),
-                MultipleChoiceQuestion(
-                    lineIndex: 5,
-                    question: "How do you call the function with length=10 and width=5?",
-                    options: [
-                        "area = calculate_area(10, 5)",
-                        "area = calculate_area(length=10, width=5)",
-                        "calculate_area(10, 5)",
-                        "area = 10 * 5"
-                    ],
-                    correctAnswerIndex: 0
-                )
-            ]
-        ),
-        
-        // MARK: - Reverse Linked List
-        Problem(
-            title: "Reverse Linked List",
-            tags: ["Linked List", "Iteration"],
-            difficulty: "Easy",
-            description: """
-                Given the head of a singly linked list, reverse the list and return the new head.
-                Example: Input: 1->2->3->4->5->NULL, Output: 5->4->3->2->1->NULL
-                """,
-            solution: [
-                "def reverse_list(head):",
-                "    # Initialize previous node as None",
-                "    prev = None",
-                "    # Current node starts at head",
-                "    current = head",
-                "    # Iterate until current is None",
-                "    while current:",
-                "        # Store next node before changing links",
-                "        next_temp = current.next",
-                "        # Reverse the link to point to previous node",
-                "        current.next = prev",
-                "        # Move prev and current one step forward",
-                "        prev = current",
-                "        current = next_temp",
-                "    # Return new head of reversed list",
-                "    return prev"
-            ],
-            questions: [
-                MultipleChoiceQuestion(
-                    lineIndex: 9,
-                    question: "How do we reverse the link for the current node?",
-                    options: [
-                        "        current.next = current",
-                        "        current.next = next_temp",
-                        "        current.next = prev",
-                        "        current.next = head"
-                    ],
-                    correctAnswerIndex: 2
-                ),
-                MultipleChoiceQuestion(
-                    lineIndex: 12,
-                    question: "What should be returned as the new head of the reversed list?",
-                    options: [
-                        "    return head",
-                        "    return current",
-                        "    return prev",
-                        "    return next_temp"
-                    ],
-                    correctAnswerIndex: 2
-                )
-            ]
-        ),
-        
-        // MARK: - Factorial
-        Problem(
-            title: "Factorial",
-            tags: ["Recursion", "Math"],
-            difficulty: "Easy",
-            description: """
-                Write a recursive function `factorial` that calculates the factorial of a non-negative integer `n`.
-                Example: Input: n = 5, Output: 120 (since 5! = 5 * 4 * 3 * 2 * 1)
-                """,
-            solution: [
-                "def factorial(n):",
-                "    # Base case: factorial of 0 or 1 is 1",
-                "    if n <= 1:",
-                "        return 1",
-                "    # Recursive case: n! = n * (n-1)!",
-                "    return n * factorial(n - 1)",
-                "",
-                "# Example usage",
-                "print(factorial(5))"
-            ],
-            questions: [
-                MultipleChoiceQuestion(
-                    lineIndex: 2,
-                    question: "What is the base case for the factorial function?",
-                    options: [
-                        "    if n <= 1:",
-                        "    if n == 0:",
-                        "    if n > 1:",
-                        "    if n < 0:"
-                    ],
-                    correctAnswerIndex: 0
-                ),
-                MultipleChoiceQuestion(
-                    lineIndex: 4,
-                    question: "What is the recursive case for calculating factorial?",
-                    options: [
-                        "    return n * factorial(n - 1)",
-                        "    return factorial(n - 1)",
-                        "    return n + factorial(n - 1)",
-                        "    return factorial(n + 1)"
-                    ],
-                    correctAnswerIndex: 0
-                )
-            ]
-        ),
-        
-        // MARK: - Sum of List
-        Problem(
-            title: "Sum of List",
-            tags: ["Array", "Iteration"],
-            difficulty: "Easy",
-            description: """
-                Write a function `sum_list` that takes a list of integers and returns their sum.
-                Example: Input: nums = [1, 2, 3], Output: 6
-                """,
-            solution: [
-                "def sum_list(nums):",
-                "    # Initialize total to 0",
-                "    total = 0",
-                "    # Iterate through each number in the list",
-                "    for num in nums:",
-                "        # Add current number to total",
-                "        total += num",
-                "    # Return the final sum",
-                "    return total",
-                "",
-                "# Example usage",
-                "print(sum_list([1, 2, 3]))"
-            ],
-            questions: [
-                MultipleChoiceQuestion(
-                    lineIndex: 4,
-                    question: "How do you iterate through the list to sum its elements?",
-                    options: [
-                        "    for num in range(nums):",
-                        "    for num in nums:",
-                        "    for num = nums:",
-                        "    for num in [1, 2, 3]:"
-                    ],
-                    correctAnswerIndex: 1
-                ),
-                MultipleChoiceQuestion(
-                    lineIndex: 5,
-                    question: "How do you accumulate the sum of the numbers?",
-                    options: [
-                        "        total += num",
-                        "        total = num",
-                        "        total + num",
-                        "        total = total + num"
-                    ],
-                    correctAnswerIndex: 0
-                )
-            ]
-        ),
-        
-        // MARK: - Replace Character
-        Problem(
-            title: "Replace Character",
-            tags: ["String"],
-            difficulty: "Easy",
-            description: """
-                Write a function `replace_char` that takes a string, an old character, and a new character, and returns the string with all occurrences of the old character replaced by the new character.
-                Example: Input: text = "banana", old = "a", new = "o", Output: "bonono"
-                """,
-            solution: [
-                "def replace_char(text, old, new):",
-                "    # Replace all occurrences of old character with new",
-                "    result = text.replace(old, new)",
-                "    # Return the modified string",
-                "    return result",
-                "",
-                "# Example usage",
-                "print(replace_char('banana', 'a', 'o'))"
-            ],
-            questions: [
-                MultipleChoiceQuestion(
-                    lineIndex: 2,
-                    question: "How do you replace all occurrences of a character in the string?",
-                    options: [
-                        "    result = text.replace('a', 'o')",
-                        "    result = text.replace(old, new)",
-                        "    result = text.sub(old, new)",
-                        "    result = text.swap(old, new)"
-                    ],
-                    correctAnswerIndex: 1
-                ),
-                MultipleChoiceQuestion(
-                    lineIndex: 4,
-                    question: "What should the function return?",
-                    options: [
-                        "    return text",
-                        "    return old",
-                        "    return new",
-                        "    return result"
-                    ],
-                    correctAnswerIndex: 3
-                )
-            ]
-        )
-    ]
+        return Problem.MultipleChoiceQuestion(lineIndex: lineIndex, question: question, options: options, correctAnswerIndex: correctAnswerIndex)
+    }
 }

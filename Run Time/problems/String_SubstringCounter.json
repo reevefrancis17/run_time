@@ -1,0 +1,34 @@
+{
+  "title": "Substring Counter",
+  "tags": ["String", "Sliding Window"],
+  "difficulty": "Hard",
+  "description": "Write a function that counts distinct substrings in a string. Example: Input: s = 'aba', Output: 5 (substrings: 'a', 'b', 'ab', 'ba', 'aba')",
+  "solution": [
+    "def count_substrings(s):",
+    "    substrings = set()",
+    "    for i in range(len(s)):",
+    "        for j in range(i + 1, len(s) + 1):",
+    "            substrings.add(s[i:j])",
+    "    return len(substrings)"
+  ],
+  "questions": [
+    {
+      "lineIndex": 1,
+      "question": "Which data structure ensures distinct substrings?",
+      "options": ["    substrings = []", "    substrings = set()", "    substrings = {}", "    substrings = list()"],
+      "correctAnswerIndex": 1
+    },
+    {
+      "lineIndex": 3,
+      "question": "How do you iterate over substring endpoints?",
+      "options": ["    for j in range(i, len(s)):", "    for j in range(i + 1, len(s) + 1):", "    for j in range(len(s)):", "    for j in range(1, len(s)):"],
+      "correctAnswerIndex": 1
+    },
+    {
+      "lineIndex": 4,
+      "question": "How do you extract a substring?",
+      "options": ["    substrings.add(s[i:j])", "    substrings.add(s[i])", "    substrings.add(s[j])", "    substrings.add(s[i:j+1])"],
+      "correctAnswerIndex": 0
+    }
+  ]
+}

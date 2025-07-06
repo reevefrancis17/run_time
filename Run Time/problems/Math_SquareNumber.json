@@ -1,0 +1,19 @@
+{
+  "title": "Square Number",
+  "tags": ["Math", "Functions"],
+  "difficulty": "Easy",
+  "description": "Write a function that returns the square of a given number. Example: Input: num = 6, Output: 36",
+  "solution": [
+    "def square(num):",
+    "    return num * num",
+    "print(square(6))"
+  ],
+  "questions": [
+    {
+      "lineIndex": 1,
+      "question": "How do you calculate the square of a number?",
+      "options": ["    return num * num", "    return num ** 2", "    return num + num", "    return num / num"],
+      "correctAnswerIndex": 0
+    }
+  ]
+}

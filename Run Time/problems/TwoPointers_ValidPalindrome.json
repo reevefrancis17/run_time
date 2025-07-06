@@ -1,0 +1,34 @@
+{
+  "title": "Valid Palindrome",
+  "tags": ["Two Pointers", "String"],
+  "difficulty": "Easy",
+  "description": "A phrase is a palindrome if, after converting all uppercase letters into lowercase letters and removing all non-alphanumeric characters, it reads the same forward and backward. Example: Input: s = 'A man, a plan, a canal: Panama', Output: true",
+  "solution": [
+    "def is_palindrome(s):",
+    "    left, right = 0, len(s) - 1",
+    "    while left < right:",
+    "        while left < right and not s[left].isalnum():",
+    "            left += 1",
+    "        while left < right and not s[right].isalnum():",
+    "            right -= 1",
+    "        if s[left].lower() != s[right].lower():",
+    "            return False",
+    "        left += 1",
+    "        right -= 1",
+    "    return True"
+  ],
+  "questions": [
+    {
+      "lineIndex": 3,
+      "question": "How do you skip non-alphanumeric characters from left?",
+      "options": ["    while left < right and not s[left].isalnum():", "    while left < right and s[left].isalnum():", "    while left < right and s[left].isalpha():", "    while left < right and not s[left].isalpha():"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "lineIndex": 7,
+      "question": "How do you compare characters case-insensitively?",
+      "options": ["    if s[left] != s[right]:", "    if s[left].lower() != s[right].lower():", "    if s[left].upper() != s[right].upper():", "    if s[left].lower() == s[right].lower():"],
+      "correctAnswerIndex": 1
+    }
+  ]
+}

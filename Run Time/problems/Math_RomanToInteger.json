@@ -1,0 +1,31 @@
+{
+  "title": "Roman to Integer",
+  "tags": ["Hash Table", "Math", "String"],
+  "difficulty": "Easy",
+  "description": "Roman numerals are represented by seven different symbols: I, V, X, L, C, D and M. Given a roman numeral, convert it to an integer. Example: Input: s = 'III', Output: 3",
+  "solution": [
+    "def roman_to_int(s):",
+    "    roman_map = {'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000}",
+    "    total = 0",
+    "    for i in range(len(s)):",
+    "        if i + 1 < len(s) and roman_map[s[i]] < roman_map[s[i + 1]]:",
+    "            total -= roman_map[s[i]]",
+    "        else:",
+    "            total += roman_map[s[i]]",
+    "    return total"
+  ],
+  "questions": [
+    {
+      "lineIndex": 4,
+      "question": "When do you subtract a Roman numeral value?",
+      "options": ["    if i + 1 < len(s) and roman_map[s[i]] > roman_map[s[i + 1]]:", "    if i + 1 < len(s) and roman_map[s[i]] < roman_map[s[i + 1]]:", "    if roman_map[s[i]] == roman_map[s[i + 1]]:", "    if i == 0:"],
+      "correctAnswerIndex": 1
+    },
+    {
+      "lineIndex": 5,
+      "question": "What do you do when subtracting?",
+      "options": ["    total += roman_map[s[i]]", "    total -= roman_map[s[i]]", "    total *= roman_map[s[i]]", "    total = roman_map[s[i]]"],
+      "correctAnswerIndex": 1
+    }
+  ]
+}

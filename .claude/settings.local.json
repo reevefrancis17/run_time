@@ -6,7 +6,12 @@
       "Bash(mv:*)",
       "Bash(ls:*)",
       "Bash(find:*)",
-      "Bash(swift:*)"
+      "Bash(swift:*)",
+      "Bash(mkdir:*)",
+      "Bash(timeout 60 xcodebuild:*)",
+      "Bash(/dev/null)",
+      "Bash(echo:*)",
+      "Bash(timeout 30 xcodebuild:*)"
     ],
     "deny": []
   }

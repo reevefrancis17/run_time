@@ -1,0 +1,19 @@
+{
+  "title": "String Length",
+  "tags": ["String"],
+  "difficulty": "Easy",
+  "description": "Write a function that returns the length of a given string. Example: Input: text = 'hello', Output: 5",
+  "solution": [
+    "def get_length(text):",
+    "    return len(text)",
+    "print(get_length('hello'))"
+  ],
+  "questions": [
+    {
+      "lineIndex": 1,
+      "question": "How do you get the length of a string?",
+      "options": ["    return len(text)", "    return text.length()", "    return text.size()", "    return count(text)"],
+      "correctAnswerIndex": 0
+    }
+  ]
+}

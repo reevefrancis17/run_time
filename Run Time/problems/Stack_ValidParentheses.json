@@ -1,0 +1,32 @@
+{
+  "title": "Valid Parentheses",
+  "tags": ["String", "Stack"],
+  "difficulty": "Easy",
+  "description": "Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid. Example: Input: s = '()[]{}', Output: true",
+  "solution": [
+    "def is_valid(s):",
+    "    stack = []",
+    "    mapping = {')': '(', '}': '{', ']': '['}",
+    "    for char in s:",
+    "        if char in mapping:",
+    "            if not stack or stack.pop() != mapping[char]:",
+    "                return False",
+    "        else:",
+    "            stack.append(char)",
+    "    return len(stack) == 0"
+  ],
+  "questions": [
+    {
+      "lineIndex": 2,
+      "question": "How do you map closing to opening brackets?",
+      "options": ["    mapping = {'(': ')', '{': '}', '[': ']'}", "    mapping = {')': '(', '}': '{', ']': '['}", "    mapping = {')', '(', '}', '{'}", "    mapping = [')': '(', '}': '{', ']': '[']"],
+      "correctAnswerIndex": 1
+    },
+    {
+      "lineIndex": 5,
+      "question": "What condition checks for invalid closing bracket?",
+      "options": ["    if not stack or stack.pop() != mapping[char]:", "    if stack and stack.pop() == mapping[char]:", "    if stack.empty():", "    if char not in mapping:"],
+      "correctAnswerIndex": 0
+    }
+  ]
+}
